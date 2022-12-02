@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assignment-for-Daresay</string>
+    <string name="label_movie_app">The Movie App</string>
+    <string name="label_sign_in">Sign in</string>
 </resources>

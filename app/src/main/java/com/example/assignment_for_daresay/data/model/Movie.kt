@@ -1,4 +1,4 @@
-package com.example.assignment_for_daresay.model
+package com.example.assignment_for_daresay.data.model
 
 import com.squareup.moshi.JsonClass
 

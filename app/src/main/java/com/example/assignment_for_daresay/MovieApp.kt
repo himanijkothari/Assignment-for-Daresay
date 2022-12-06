@@ -12,13 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.assignment_for_daresay.ui.screen.HomeScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.assignment_for_daresay.ui.MovieNavGraph
 
 
 @Composable
 fun MovieApp(
     movieViewModel: MovieViewModel
 ) {
+
+    val navController = rememberNavController()
+
     Scaffold(
         topBar = {
             TopAppBar() {
@@ -30,7 +34,7 @@ fun MovieApp(
             }
         }
     ) {
-        HomeScreen(movieViewModel)
+        MovieNavGraph(navController, movieViewModel)
     }
 }
 

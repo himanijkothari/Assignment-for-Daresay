@@ -27,6 +27,10 @@ fun HomeScreen(movieViewModel: MovieViewModel) {
         value = movieViewModel.getTopRatedMovies()
     }
 
+    val popularMovie = produceState<Movies?>(initialValue = null){
+        value = movieViewModel.getPopularMovies()
+    }
+
     LazyColumn(){
 
         item {
@@ -48,6 +52,31 @@ fun HomeScreen(movieViewModel: MovieViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(topRatedMovie.value!!.results) {
+                        MovieDetailCard(it)
+                    }
+                }
+            }
+        }
+
+        item {
+            Text(
+                text = stringResource(id = R.string.label_popular_movies),
+                modifier = Modifier.padding(start = 8.dp),
+                color = Color.Black,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.h2
+            )
+        }
+
+        item {
+            if(popularMovie.value!= null){
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    items(popularMovie.value!!.results) {
                         MovieDetailCard(it)
                     }
                 }

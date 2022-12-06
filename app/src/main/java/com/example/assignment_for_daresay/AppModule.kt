@@ -1,4 +1,6 @@
-import com.example.assignment_for_daresay.AuthInterceptor
+package com.example.assignment_for_daresay
+
+import com.example.assignment_for_daresay.data.controller.MovieController
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -32,11 +34,16 @@ object AppModule  {
             .build()
     }
 
-
+    @Provides
+    @Singleton
     fun provideRetrofit( httpClient: OkHttpClient, moshi: Moshi): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
             .client(httpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
+
+    @Provides
+    @Singleton
+    fun provideMovieController(retrofit: Retrofit) = retrofit.create(MovieController::class.java)
 }

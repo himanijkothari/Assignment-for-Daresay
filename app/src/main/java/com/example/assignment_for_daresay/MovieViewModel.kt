@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.assignment_for_daresay.data.controller.MovieController
 import com.example.assignment_for_daresay.data.model.Movies
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.Dispatcher
 import javax.inject.Inject
 
+@HiltViewModel
 class MovieViewModel @Inject constructor(
     private val movieController: MovieController
 ): ViewModel() {

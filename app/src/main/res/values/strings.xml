@@ -2,4 +2,6 @@
     <string name="app_name">Assignment-for-Daresay</string>
     <string name="label_movie_app">The Movie App</string>
     <string name="label_sign_in">Sign in</string>
+    <string name="label_top_rated_movies">Top Rated Movies</string>
+    <string name="label_popular_movies">Popular Movies</string>
 </resources>

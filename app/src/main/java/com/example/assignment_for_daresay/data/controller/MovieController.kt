@@ -1,8 +1,11 @@
 package com.example.assignment_for_daresay.data.controller
 
+
+import com.example.assignment_for_daresay.data.model.Details
 import com.example.assignment_for_daresay.data.model.Movies
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieController {
@@ -12,5 +15,8 @@ interface MovieController {
 
     @GET("movie/popular")
     suspend fun getPopularMovies(@Query("language") language: String, @Query("page") page: Int) : Response<Movies>
+
+    @GET("movie/{movieId}")
+    suspend fun getMovieDetail(@Path("movieId") movieId: Int,@Query("language") language: String ) : Response<Details>
 
 }

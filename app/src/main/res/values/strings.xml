@@ -4,4 +4,6 @@
     <string name="label_sign_in">Sign in</string>
     <string name="label_top_rated_movies">Top Rated Movies</string>
     <string name="label_popular_movies">Popular Movies</string>
+    <string name="label_info">Information</string>
+    <string name="label_reviews">Reviews</string>
 </resources>

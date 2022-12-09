@@ -1,6 +1,8 @@
 package com.example.assignment_for_daresay
 
 import androidx.navigation.NamedNavArgument
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 
 sealed class Screens(
     val route:String,
@@ -12,5 +14,11 @@ object Home: Screens (
 )
 
 object Details: Screens (
-    route = "details"
+    route = "details/{movie}",
+    arguments = listOf(
+        navArgument("movie") {
+            nullable = false
+            type = NavType.IntType
+        }
+    )
 )

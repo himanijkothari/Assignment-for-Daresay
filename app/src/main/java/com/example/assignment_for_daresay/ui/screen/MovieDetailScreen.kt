@@ -4,8 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.material.icons.Icons
@@ -17,7 +15,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -29,6 +26,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.assignment_for_daresay.MovieViewModel
 import com.example.assignment_for_daresay.data.model.Details
 import com.example.assignment_for_daresay.R
+import com.example.assignment_for_daresay.ui.widget.MovieReviews
 
 private const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 
@@ -57,7 +55,10 @@ fun MovieDetailScreen(
         .fillMaxSize()
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(top = 48.dp, start = 16.dp).weight(1f)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 48.dp, start = 16.dp)
+                .weight(1f)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -138,7 +139,6 @@ fun MovieDetailScreen(
                                     language.name?.let {
                                         Text(
                                             text = it,
-
                                         )
                                     }
                                 }
@@ -149,7 +149,9 @@ fun MovieDetailScreen(
             }
         }
         Column(
-            modifier = Modifier.weight(1f).fillMaxWidth( )
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
         ) {
             Row(
                 modifier = Modifier
@@ -199,18 +201,15 @@ fun MovieDetailScreen(
                                     }
                                 }
                             }
-
                         }
-
                     }
+                }
+                DetailScreenTab.Review -> {
+                    MovieReviews(movieId = movieId , movieViewModel)
                 }
             }
         }
     }
-
-
-
-
 }
 
 

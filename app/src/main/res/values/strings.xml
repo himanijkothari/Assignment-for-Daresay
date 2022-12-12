@@ -6,4 +6,6 @@
     <string name="label_popular_movies">Popular Movies</string>
     <string name="label_info">Information</string>
     <string name="label_reviews">Reviews</string>
+    <string name="label_story_line">Story Line</string>
+
 </resources>

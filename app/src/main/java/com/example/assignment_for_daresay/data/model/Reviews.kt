@@ -27,5 +27,5 @@ data class AuthorDetails (
     val name: String?,
     val username : String?,
     val avatar_path : String? = null,
-    val rating : Int? = null
+    val rating : Double? = null
 )

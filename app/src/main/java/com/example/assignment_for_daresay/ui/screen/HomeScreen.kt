@@ -15,13 +15,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.assignment_for_daresay.MovieViewModel
 import com.example.assignment_for_daresay.R
 import com.example.assignment_for_daresay.data.model.Movies
 import com.example.assignment_for_daresay.ui.widget.MovieDetailCard
 
 @Composable
-fun HomeScreen(movieViewModel: MovieViewModel) {
+fun HomeScreen(
+    movieViewModel: MovieViewModel,
+    navController: NavController
+) {
 
     val topRatedMovie = produceState<Movies?>(initialValue = null){
         value = movieViewModel.getTopRatedMovies()
@@ -52,7 +56,7 @@ fun HomeScreen(movieViewModel: MovieViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(topRatedMovie.value!!.results) {
-                        MovieDetailCard(it)
+                        MovieDetailCard(it , navController)
                     }
                 }
             }
@@ -77,14 +81,10 @@ fun HomeScreen(movieViewModel: MovieViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(popularMovie.value!!.results) {
-                        MovieDetailCard(it)
+                        MovieDetailCard(it, navController)
                     }
                 }
             }
         }
-
-
-
-
     }
 }

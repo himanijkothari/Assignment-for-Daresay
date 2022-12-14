@@ -19,23 +19,26 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.assignment_for_daresay.data.model.MovieDetailClass
 import com.example.assignment_for_daresay.ui.theme.golden
 
+
 private const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
 
 @Composable
-fun MovieDetailCard(movie : MovieDetailClass) {
-    
+fun MovieDetailCard(movie : MovieDetailClass , navController: NavController) {
+
+    val id = movie.id
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(top = 16.dp)
     ) {
-        
         Box(
-            modifier = Modifier.size(150.dp,150.dp),
+            modifier = Modifier.size(150.dp,150.dp).clickable { navController.navigate("details/${id}") },
             contentAlignment = Alignment.TopEnd
         ) {
             Image(
@@ -62,10 +65,8 @@ fun MovieDetailCard(movie : MovieDetailClass) {
                     text = movie.vote_average.toString(),
                     fontSize = 12.sp
                 )
-
             }
         }
-
         Spacer(modifier = Modifier.height(2.dp))
         movie.original_title?.let {
             Text(
@@ -86,8 +87,5 @@ fun MovieDetailCard(movie : MovieDetailClass) {
                 )
             }
         }
-
-
-        
     }
 }

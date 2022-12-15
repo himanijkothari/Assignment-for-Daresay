@@ -35,6 +35,7 @@ import com.example.assignment_for_daresay.data.model.DetailedReview
 import com.example.assignment_for_daresay.data.model.Reviews
 import com.example.assignment_for_daresay.ui.theme.appRed
 import com.example.assignment_for_daresay.ui.theme.golden
+import com.example.assignment_for_daresay.ui.theme.gradientRadial
 import me.nikhilchaudhari.library.NeuInsets
 import me.nikhilchaudhari.library.neumorphic
 import me.nikhilchaudhari.library.shapes.Pressed
@@ -56,7 +57,6 @@ fun MovieReviews(movieId : Int, movieViewModel : MovieViewModel) {
     if(isReviewAvailable != null){
         if(isReviewAvailable != 0){
             LazyColumn(
-                modifier = Modifier.background(Color.Black),
                 contentPadding = PaddingValues(vertical = 8.dp)
             ) {
                 items(movieReviews.value!!.results){
@@ -81,116 +81,116 @@ fun reviewCard(reviews: DetailedReview){
     val formatter = DateTimeFormatter.ofPattern("MMMM dd,yyyy")
     val parsedDate = formatter.format(localDateTime)
 
-        Card(
-            modifier = Modifier
-                .padding(16.dp)
-                .neumorphic(
-                    neuShape = Pressed.Rounded(16.dp),
-                    lightShadowColor = Color.White,
-                    darkShadowColor = Color(0xFFEDF1F4),
-                    strokeWidth = 2.dp,
-                    neuInsets = NeuInsets(3.dp, 3.dp)
-                )
-                .clip(RoundedCornerShape(16.dp))
+    Card(
+        modifier = Modifier
+            .padding(16.dp)
+            .neumorphic(
+                neuShape = Pressed.Rounded(16.dp),
+                lightShadowColor = Color.White,
+                darkShadowColor = Color(0xFFEDF1F4),
+                strokeWidth = 2.dp,
+                neuInsets = NeuInsets(3.dp, 3.dp)
+            )
+            .clip(RoundedCornerShape(16.dp))
+    ) {
+        Column(modifier = Modifier
+            .background(Color.Black)
+            .padding(16.dp)
         ) {
-            Column(modifier = Modifier
-                .background(Color.Black)
-                .padding(16.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth()
-                ){
-                    if(reviews.author_details?.avatar_path != null){
-                        AsyncImage(
-                            model = IMAGE_URL + reviews.author_details.avatar_path,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(50.dp)
-                                .clip(CircleShape)
-                                .border(1.dp, appRed, CircleShape)
-                        )
-                    } else {
-                        Text(
-                            text = reviews.author?.first().toString().uppercase(),
-                            modifier = Modifier
-                                .padding(16.dp)
-                                .drawBehind {
-                                    drawCircle(
-                                        appRed,
-                                        radius = this.size.maxDimension
-                                    )
-                                }
-                                .background(appRed),
-                            color = Color.White
-
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    Column() {
-                        Row(
-                            modifier = Modifier
-                                .padding(top = 4.dp)
-                        ) {
-                            reviews.author?.let {
-                                Text(
-                                    text = " A review by $it",
-                                    color = Color.White,
-                                    textAlign = TextAlign.Center,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    style = MaterialTheme.typography.subtitle1
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ){
+                if(reviews.author_details?.avatar_path != null){
+                    AsyncImage(
+                        model = IMAGE_URL + reviews.author_details.avatar_path,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(50.dp)
+                            .clip(CircleShape)
+                            .border(1.dp, appRed, CircleShape)
+                    )
+                } else {
+                    Text(
+                        text = reviews.author?.first().toString().uppercase(),
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .drawBehind {
+                                drawCircle(
+                                    appRed,
+                                    radius = this.size.maxDimension
                                 )
                             }
-                            
-                            Spacer(modifier = Modifier.width(8.dp))
+                            .background(appRed),
+                        color = Color.White
 
-                            if(reviews.author_details?.rating != null) {
-                                Row(
-                                    modifier = Modifier
-                                        .padding(4.dp)
-                                        .clip(RoundedCornerShape(4.dp))
-                                        .background(appRed)
-                                ) {
-                                    Icon(
-                                        Icons.Default.Star,
-                                        contentDescription = null,
-                                        modifier = Modifier.size(15.dp),
-                                        tint = Color.White
-                                    )
-                                    Spacer(modifier = Modifier.width(2.dp))
-                                    Text(
-                                        modifier = Modifier.padding(end = 4.dp),
-                                        text = reviews.author_details?.rating.toString(),
-                                        fontSize = 12.sp,
-                                        color = Color.White
-                                    )
-                                }
-                            }
+                    )
+                }
 
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Column() {
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 4.dp)
+                    ) {
+                        reviews.author?.let {
+                            Text(
+                                text = " A review by $it",
+                                color = Color.White,
+                                textAlign = TextAlign.Center,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.subtitle1
+                            )
                         }
 
-                        Text(
-                            text = "written on $parsedDate",
-                            modifier = Modifier.padding(start = 4.dp),
-                            color = Color.White,
-                            textAlign = TextAlign.Center,
-                            fontSize = 14.sp,
-                            style = MaterialTheme.typography.subtitle1
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
 
-                reviews.content?.let {
+                        if(reviews.author_details?.rating != null) {
+                            Row(
+                                modifier = Modifier
+                                    .padding(4.dp)
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(appRed)
+                            ) {
+                                Icon(
+                                    Icons.Default.Star,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(15.dp),
+                                    tint = Color.White
+                                )
+                                Spacer(modifier = Modifier.width(2.dp))
+                                Text(
+                                    modifier = Modifier.padding(end = 4.dp),
+                                    text = reviews.author_details?.rating.toString(),
+                                    fontSize = 12.sp,
+                                    color = Color.White
+                                )
+                            }
+                        }
+
+                    }
+
                     Text(
-                        text = it,
+                        text = "written on $parsedDate",
+                        modifier = Modifier.padding(start = 4.dp),
                         color = Color.White,
-                        fontSize = 12.sp,
-                        style = MaterialTheme.typography.body1
+                        textAlign = TextAlign.Center,
+                        fontSize = 14.sp,
+                        style = MaterialTheme.typography.subtitle1
                     )
                 }
             }
+            Spacer(modifier = Modifier.height(16.dp))
+
+            reviews.content?.let {
+                Text(
+                    text = it,
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    style = MaterialTheme.typography.body1
+                )
+            }
         }
+    }
 }

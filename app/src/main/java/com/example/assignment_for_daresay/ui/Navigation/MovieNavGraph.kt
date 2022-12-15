@@ -5,12 +5,12 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.assignment_for_daresay.Details
-import com.example.assignment_for_daresay.Home
-import com.example.assignment_for_daresay.MovieViewModel
+import com.example.assignment_for_daresay.*
 import com.example.assignment_for_daresay.data.model.MovieDetailClass
+import com.example.assignment_for_daresay.ui.screen.DownloadScreen
 import com.example.assignment_for_daresay.ui.screen.HomeScreen
 import com.example.assignment_for_daresay.ui.screen.MovieDetailScreen
+import com.example.assignment_for_daresay.ui.screen.ProfileScreen
 import com.squareup.moshi.Moshi
 
 @Composable
@@ -44,6 +44,20 @@ fun MovieNavGraph(
                     navController = navController
                 )
             }
+        }
+
+        composable(
+            Profile.route,
+            arguments = Profile.arguments
+        ) {
+            ProfileScreen()
+        }
+
+        composable(
+            Download.route,
+            arguments = Download.arguments
+        ){
+            DownloadScreen()
         }
     }
 }

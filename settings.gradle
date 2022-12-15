@@ -3,6 +3,7 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+
     }
 }
 dependencyResolutionManagement {
@@ -10,7 +11,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url=uri("https://oss.sonatype.org/content/repositories/snapshots/") }
     }
 }
+
 rootProject.name = "Assignment-for-Daresay"
 include ':app'

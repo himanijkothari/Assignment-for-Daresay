@@ -8,4 +8,11 @@
     <string name="label_reviews">Reviews</string>
     <string name="label_story_line">Story Line</string>
     <string name="label_no_reviews">We do not have any reviews for this movie. Would you like to write one?</string>
+    <string name="label_welcome">Welcome Guest!</string>
+    <string name="screen_home">Home</string>
+    <string name="screen_profile">Profile</string>
+    <string name="screen_download">Download</string>
+    <string name="screen_details">Details</string>
+    <string name ="label_ok">OK</string>
+    <string name="message_search_dialogue">Search function is currently not available</string>
 </resources>

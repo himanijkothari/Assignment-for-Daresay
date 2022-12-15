@@ -56,7 +56,7 @@ fun MovieDetailCard(movie : MovieDetailClass , navController: NavController) {
         ) {
             Image(
                 painter = rememberAsyncImagePainter(model = IMAGE_URL + movie.poster_path ) ,
-                contentDescription = null,
+                contentDescription = "movie poster",
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.fillMaxSize()
                 )
